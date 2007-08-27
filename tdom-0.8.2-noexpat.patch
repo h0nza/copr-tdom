@@ -1,0 +1,57 @@
+--- tDOM-0.8.2/configure.orig	2007-08-26 15:56:58.000000000 -0700
++++ tDOM-0.8.2/configure	2007-08-26 15:57:52.000000000 -0700
+@@ -6298,10 +6298,7 @@
+ #-----------------------------------------------------------------------
+ 
+ 
+-    vars="expat/xmlrole.c     \
+-                 expat/xmltok.c      \
+-                 expat/xmlparse.c    \
+-                 generic/xmlsimple.c \
++    vars="generic/xmlsimple.c \
+                  generic/utf8conv.c  \
+                  generic/dom.c       \
+                  generic/domalloc.c  \
+@@ -6360,7 +6357,7 @@
+ 
+ 
+ 
+-    vars="-I${srcdir}/generic -I${srcdir}/expat ${AOL_INCLUDES}"
++    vars="-I${srcdir}/generic ${AOL_INCLUDES}"
+     for i in $vars; do
+ 	PKG_INCLUDES="$PKG_INCLUDES $i"
+     done
+--- tDOM-0.8.2/configure.in.orig	2007-08-26 15:56:27.000000000 -0700
++++ tDOM-0.8.2/configure.in	2007-08-26 15:56:51.000000000 -0700
+@@ -83,10 +83,7 @@
+ # and PKG_TCL_SOURCES.
+ #-----------------------------------------------------------------------
+ 
+-TEA_ADD_SOURCES([expat/xmlrole.c     \
+-                 expat/xmltok.c      \
+-                 expat/xmlparse.c    \
+-                 generic/xmlsimple.c \
++TEA_ADD_SOURCES([generic/xmlsimple.c \
+                  generic/utf8conv.c  \
+                  generic/dom.c       \
+                  generic/domalloc.c  \
+@@ -100,7 +97,7 @@
+                  generic/tclexpat.c  \
+                  generic/tdomStubInit.c])
+ TEA_ADD_HEADERS([generic/tdom.h])
+-TEA_ADD_INCLUDES([-I${srcdir}/generic -I${srcdir}/expat ${AOL_INCLUDES}])
++TEA_ADD_INCLUDES([-I${srcdir}/generic ${AOL_INCLUDES}])
+ TEA_ADD_LIBS([${AOL_LIBS}])
+ TEA_ADD_CFLAGS([])
+ TEA_ADD_STUB_SOURCES([generic/tdomStubLib.c])
+--- tDOM-0.8.2/Makefile.in.orig	2007-08-26 15:57:05.000000000 -0700
++++ tDOM-0.8.2/Makefile.in	2007-08-26 15:57:28.000000000 -0700
+@@ -296,7 +296,7 @@
+ # As necessary, add $(srcdir):$(srcdir)/compat:....
+ #========================================================================
+ 
+-VPATH = $(srcdir):$(srcdir)/expat:$(srcdir)/generic:$(srcdir)/unix:$(srcdir)/win
++VPATH = $(srcdir):$(srcdir)/generic:$(srcdir)/unix:$(srcdir)/win
+ 
+ .c.@OBJEXT@:
+ 	$(COMPILE) -c `@CYGPATH@ $<` -o $@
