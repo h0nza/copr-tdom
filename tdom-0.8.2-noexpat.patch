@@ -1,5 +1,5 @@
---- tDOM-0.8.2/configure.orig	2007-08-26 15:56:58.000000000 -0700
-+++ tDOM-0.8.2/configure	2007-08-26 15:57:52.000000000 -0700
+--- tDOM-0.8.2/configure.orig	2007-08-05 11:47:49.000000000 -0700
++++ tDOM-0.8.2/configure	2007-09-23 21:53:00.000000000 -0700
 @@ -6298,10 +6298,7 @@
  #-----------------------------------------------------------------------
  
@@ -12,17 +12,8 @@
                   generic/utf8conv.c  \
                   generic/dom.c       \
                   generic/domalloc.c  \
-@@ -6360,7 +6357,7 @@
- 
- 
- 
--    vars="-I${srcdir}/generic -I${srcdir}/expat ${AOL_INCLUDES}"
-+    vars="-I${srcdir}/generic ${AOL_INCLUDES}"
-     for i in $vars; do
- 	PKG_INCLUDES="$PKG_INCLUDES $i"
-     done
---- tDOM-0.8.2/configure.in.orig	2007-08-26 15:56:27.000000000 -0700
-+++ tDOM-0.8.2/configure.in	2007-08-26 15:56:51.000000000 -0700
+--- tDOM-0.8.2/configure.in.orig	2007-08-05 11:47:49.000000000 -0700
++++ tDOM-0.8.2/configure.in	2007-09-23 21:53:00.000000000 -0700
 @@ -83,10 +83,7 @@
  # and PKG_TCL_SOURCES.
  #-----------------------------------------------------------------------
@@ -35,17 +26,17 @@
                   generic/utf8conv.c  \
                   generic/dom.c       \
                   generic/domalloc.c  \
-@@ -100,7 +97,7 @@
-                  generic/tclexpat.c  \
-                  generic/tdomStubInit.c])
- TEA_ADD_HEADERS([generic/tdom.h])
--TEA_ADD_INCLUDES([-I${srcdir}/generic -I${srcdir}/expat ${AOL_INCLUDES}])
-+TEA_ADD_INCLUDES([-I${srcdir}/generic ${AOL_INCLUDES}])
- TEA_ADD_LIBS([${AOL_LIBS}])
- TEA_ADD_CFLAGS([])
- TEA_ADD_STUB_SOURCES([generic/tdomStubLib.c])
---- tDOM-0.8.2/Makefile.in.orig	2007-08-26 15:57:05.000000000 -0700
-+++ tDOM-0.8.2/Makefile.in	2007-08-26 15:57:28.000000000 -0700
+--- tDOM-0.8.2/Makefile.in.orig	2007-03-02 15:43:53.000000000 -0800
++++ tDOM-0.8.2/Makefile.in	2007-09-23 21:56:49.000000000 -0700
+@@ -118,7 +118,7 @@
+ RANLIB_STUB	= @RANLIB_STUB@
+ SHLIB_CFLAGS	= @SHLIB_CFLAGS@
+ SHLIB_LD	= @SHLIB_LD@
+-SHLIB_LD_LIBS	= @SHLIB_LD_LIBS@
++SHLIB_LD_LIBS	= @SHLIB_LD_LIBS@ -lexpat
+ STLIB_LD	= @STLIB_LD@
+ #TCL_DEFS	= @TCL_DEFS@
+ TCL_BIN_DIR	= @TCL_BIN_DIR@
 @@ -296,7 +296,7 @@
  # As necessary, add $(srcdir):$(srcdir)/compat:....
  #========================================================================
