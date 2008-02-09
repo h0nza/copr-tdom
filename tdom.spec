@@ -1,6 +1,6 @@
 Name:           tdom
 Version:        0.8.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        DOM parser for Tcl
 
 Group:          Development/Libraries
@@ -63,6 +63,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Feb 9 2008 Wart <wart at kobold.org> - 0.8.2-3
+- Rebuild for gcc 4.3
+
 * Sun Sep 23 2007 Wart <wart at kobold.org> - 0.8.2-2
 - Added missing linkage against -lexpat
 
