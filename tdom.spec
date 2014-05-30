@@ -2,7 +2,7 @@
 
 Name:           tdom
 Version:        0.8.2
-Release:        12%{?dist}
+Release:        13%{?dist}
 Summary:        DOM parser for Tcl
 
 Group:          Development/Libraries
@@ -15,7 +15,7 @@ Patch0:         tdom-0.8.2-noexpat.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  tcl-devel expat-devel
-Requires:       tcl(abi) = 8.5
+Requires:       tcl(abi) = 8.6
 
 %description
 tDOM combines high performance XML data processing with easy and powerful Tcl
@@ -75,6 +75,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri May 30 2014 Dmitrij S. Kryzhevich <krege@land.ru> - 0.8.2-13
+- Changed requires to require tcl-8.6.
+
 * Wed May 21 2014 Jaroslav Škarvada <jskarvad@redhat.com> - 0.8.2-12
 - Rebuilt for https://fedoraproject.org/wiki/Changes/f21tcl86
 
