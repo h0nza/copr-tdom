@@ -2,7 +2,7 @@
 
 Name:           tdom
 Version:        0.8.2
-Release:        13%{?dist}
+Release:        14%{?dist}
 Summary:        DOM parser for Tcl
 
 Group:          Development/Libraries
@@ -12,6 +12,7 @@ License:        LGPLv2+
 URL:            http://www.tdom.org
 Source0:        http://www.tdom.org/files/tDOM-%{version}.tgz
 Patch0:         tdom-0.8.2-noexpat.patch
+Patch1:         tdom-0.8.2-tcl8.6.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  tcl-devel expat-devel
@@ -32,6 +33,7 @@ Development header files for compiling against tdom.
 %prep
 %setup -q -n tDOM-%{version}
 %patch0 -p1
+%patch1 -p1
 
 
 %build
@@ -73,8 +75,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/*.h
 
 
-
 %changelog
+* Fri May 30 2014 Dmitrij S. Kryzhevich <krege@land.ru> - 0.8.2-14
+- Fix for tcl-8.6.
+
 * Fri May 30 2014 Dmitrij S. Kryzhevich <krege@land.ru> - 0.8.2-13
 - Changed requires to require tcl-8.6.
 
