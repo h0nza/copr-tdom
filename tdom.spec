@@ -2,7 +2,7 @@
 
 Name:           tdom
 Version:        0.8.2
-Release:        14%{?dist}
+Release:        15%{?dist}
 Summary:        DOM parser for Tcl
 
 Group:          Development/Libraries
@@ -76,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Jun 08 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.8.2-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
 * Fri May 30 2014 Dmitrij S. Kryzhevich <krege@land.ru> - 0.8.2-14
 - Fix for tcl-8.6.
 
