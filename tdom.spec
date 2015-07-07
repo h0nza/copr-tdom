@@ -2,7 +2,7 @@
 
 Name:           tdom
 Version:        0.8.2
-Release:        18%{?dist}
+Release:        19%{?dist}
 Summary:        DOM parser for Tcl
 
 Group:          Development/Libraries
@@ -38,6 +38,8 @@ Development header files for compiling against tdom.
 %configure --enable-threads
 make %{?_smp_mflags}
 
+rm -rf expat
+
 %install
 make install DESTDIR=%{buildroot}
 
@@ -67,6 +69,9 @@ sed -i -e "s#%{_libdir}/%{name}%{version}#%{_libdir}#" %{buildroot}%{_libdir}/td
 
 
 %changelog
+* Tue Jul 07 2015 Dmitrij S. Kryzhevich <krege@land.ru> - 0.8.2-18
+- Real expat cutoff (foggot one line in prev commit :( ).
+
 * Tue Jul 07 2015 Dmitrij S. Kryzhevich <krege@land.ru> - 0.8.2-18
 - Better expat cutoff.
 - Spec cleanup: drom buildroot definition, clean section, defatr tag, buildroot clean in install section.
