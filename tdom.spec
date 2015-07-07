@@ -69,7 +69,7 @@ sed -i -e "s#%{_libdir}/%{name}%{version}#%{_libdir}#" %{buildroot}%{_libdir}/td
 
 
 %changelog
-* Tue Jul 07 2015 Dmitrij S. Kryzhevich <krege@land.ru> - 0.8.2-18
+* Tue Jul 07 2015 Dmitrij S. Kryzhevich <krege@land.ru> - 0.8.2-19
 - Real expat cutoff (foggot one line in prev commit :( ).
 
 * Tue Jul 07 2015 Dmitrij S. Kryzhevich <krege@land.ru> - 0.8.2-18
