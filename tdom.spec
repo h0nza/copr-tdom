@@ -2,7 +2,7 @@
 
 Name:           tdom
 Version:        0.8.2
-Release:        17%{?dist}
+Release:        18%{?dist}
 Summary:        DOM parser for Tcl
 
 Group:          Development/Libraries
@@ -13,7 +13,6 @@ URL:            http://www.tdom.org
 Source0:        http://www.tdom.org/files/tDOM-%{version}.tgz
 Patch0:         tdom-0.8.2-noexpat.patch
 Patch1:         tdom-0.8.2-tcl8.6.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  tcl-devel expat-devel
 Requires:       tcl(abi) = 8.6
@@ -35,31 +34,24 @@ Development header files for compiling against tdom.
 %patch0 -p1
 %patch1 -p1
 
-
 %build
 %configure --enable-threads
 make %{?_smp_mflags}
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
+make install DESTDIR=%{buildroot}
 
-mkdir -p $RPM_BUILD_ROOT%{tcl_sitearch}
-mv $RPM_BUILD_ROOT%{_libdir}/%{name}%{version}/*.so $RPM_BUILD_ROOT%{_libdir}
-mv $RPM_BUILD_ROOT%{_libdir}/%{name}%{version}/*.a $RPM_BUILD_ROOT%{_libdir}
-mv $RPM_BUILD_ROOT%{_libdir}/%{name}%{version} $RPM_BUILD_ROOT%{tcl_sitearch}
+mkdir -p %{buildroot}%{tcl_sitearch}
+mv %{buildroot}%{_libdir}/%{name}%{version}/*.so %{buildroot}%{_libdir}
+mv %{buildroot}%{_libdir}/%{name}%{version}/*.a %{buildroot}%{_libdir}
+mv %{buildroot}%{_libdir}/%{name}%{version} %{buildroot}%{tcl_sitearch}
 
 # Adjust some paths to reflect the new file locations
-sed -i -e 's/file join $dir libtdom/file join $dir .. .. libtdom/' $RPM_BUILD_ROOT%{tcl_sitearch}/%{name}%{version}/pkgIndex.tcl
+sed -i -e 's/file join $dir libtdom/file join $dir .. .. libtdom/' %{buildroot}%{tcl_sitearch}/%{name}%{version}/pkgIndex.tcl
 
-sed -i -e "s#%{_libdir}/%{name}%{version}#%{_libdir}#" $RPM_BUILD_ROOT%{_libdir}/tdomConfig.sh
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
+sed -i -e "s#%{_libdir}/%{name}%{version}#%{_libdir}#" %{buildroot}%{_libdir}/tdomConfig.sh
 
 %files
-%defattr(-,root,root,-)
 %doc README LICENSE CHANGES ChangeLog doc/*.html NPL-1_1Final.html
 %{tcl_sitearch}/%{name}%{version}
 %{_libdir}/*.so
@@ -67,7 +59,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/mann/*.gz
 
 %files devel
-%defattr(-,root,root,-)
 %{_libdir}/%{name}Config.sh
 # This static library is a 'stub' library that is used to assist with
 # shared lib linking across library versions:  http://wiki.tcl.tk/285
@@ -76,6 +67,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jul 07 2015 Dmitrij S. Kryzhevich <krege@land.ru> - 0.8.2-18
+- Better expat cutoff.
+- Spec cleanup: drom buildroot definition, clean section, defatr tag, buildroot clean in install section.
+
 * Fri Jun 19 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.8.2-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
