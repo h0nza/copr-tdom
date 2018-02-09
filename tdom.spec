@@ -2,7 +2,7 @@
 
 Name:           tdom
 Version:        0.8.2
-Release:        23%{?dist}
+Release:        24%{?dist}
 Summary:        DOM parser for Tcl
 
 Group:          Development/Libraries
@@ -69,6 +69,9 @@ sed -i -e "s#%{_libdir}/%{name}%{version}#%{_libdir}#" %{buildroot}%{_libdir}/td
 
 
 %changelog
+* Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.2-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
 * Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.8.2-23
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
