@@ -14,6 +14,7 @@ Source0:        http://www.tdom.org/files/tDOM-%{version}.tgz
 Patch0:         tdom-0.8.2-noexpat.patch
 Patch1:         tdom-0.8.2-tcl8.6.patch
 
+BuildRequires:  gcc
 BuildRequires:  tcl-devel expat-devel
 Requires:       tcl(abi) = 8.6
 
