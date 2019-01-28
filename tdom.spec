@@ -5,7 +5,6 @@ Version:        0.8.2
 Release:        25%{?dist}
 Summary:        DOM parser for Tcl
 
-Group:          Development/Libraries
 # Most files MPL except for ./generic/xmlsimple.c and ./generic/domhtml.c
 # which are LGPLV2+.
 License:        LGPLv2+
@@ -25,7 +24,6 @@ XML with a scripting language and uses very little memory.
 
 %package devel
 Summary: Development files for compiling against tdom
-Group: Development/Libraries
 Requires:       %{name} = %{version}-%{release} expat-devel
 %description devel
 Development header files for compiling against tdom.
